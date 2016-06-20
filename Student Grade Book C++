@@ -1,0 +1,168 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+const int CLASS = 3;
+const int STUDENTS = 4;
+
+double getTotal(double[][STUDENTS]);
+double getAverage(double[][STUDENTS]);
+double getRowTotal(double[][STUDENTS]);
+double getColumnTotal(double[][STUDENTS]);
+double getHighestInRow(double[][STUDENTS]);
+double getLowestInRow(double[][STUDENTS]);
+
+int main()
+{
+	double grades[CLASS][STUDENTS]; // 2D array, rows and columns
+	double rowTotal;
+	double columnTotal;
+	double rowHighest;
+	double rowLowest;
+
+	cout << "Student GradeBook" << endl
+		<< "------------------------" << endl << endl;
+
+	cout << "Please input the grades for: " << endl;
+
+
+	//Nested For-Loops to input values
+	for (int class_num = 0; class_num < CLASS; class_num++)
+	{
+		for (int student_num = 0; student_num < STUDENTS; student_num++)
+		{
+			cout << "Class #" << class_num + 1 << ", Student "
+				<< student_num + 1 << ": ";
+			cin >> grades[class_num][student_num];
+			while (grades[class_num][student_num] < 0 || grades[class_num][student_num] > 100)
+			{
+				cout << "Invalid input, try again: ";
+				cin >> grades[class_num][student_num];
+			}
+		}
+		cout << endl;
+	}
+	
+	//Call to Functions to find specific values
+	cout << "The Total Grades for all classes: " << fixed << showpoint << setprecision(2) << getTotal(grades) << " out of " << 100 * 4 * 3 << endl
+		<< "The Average Grade of all classes: " << fixed << showpoint << setprecision(2) << getAverage(grades) << " out of 100" << endl;
+	rowTotal = getRowTotal(grades);
+	columnTotal = getColumnTotal(grades);
+	rowHighest = getHighestInRow(grades);
+	rowLowest = getLowestInRow(grades);
+
+	cout << "The Grade Total of this class is " << rowTotal << " out of " << 100 * STUDENTS << endl
+		<< "The Grade Total of this Student Position is " << columnTotal << " out of " << 100 * CLASS << endl
+		<< "The highest grade in this class is " << rowHighest << endl
+		<< "The lowest grade in this class is " << rowLowest << endl;
+
+	return 0;
+}
+
+double getTotal(double classgrade[CLASS][STUDENTS]) // Finds totals of all students
+{
+	double total = 0; //Accumulator
+
+	//Nestet for-loop adds all values to find the total
+	for (int row = 0; row < CLASS; row++)
+	{
+		for (int column = 0; column < STUDENTS; column++)
+			total += classgrade[row][column];
+	}
+
+	return total;
+}
+
+double getAverage(double class_average[CLASS][STUDENTS]) // Finds Average of all students
+{
+	
+	double total = 0; //Accumulator
+	double average; // stores average
+
+	//Nested for loop adds all values, then divides by total number of students
+	for (int row = 0; row < CLASS; row++)
+	{
+		for (int column = 0; column < STUDENTS; column++)
+			total += class_average[row][column];
+	}
+
+	average = total / (CLASS * STUDENTS);
+
+	return average;
+}
+
+double getRowTotal(double averagePerClass[CLASS][STUDENTS]) //Finds total of specific row
+{
+	int class_num;
+	int row;
+
+	cout << "What class would you like to know the average for?" << endl;
+	cin >> class_num; // specifies what row to solve for
+	row = class_num - 1;
+
+	double total = 0; //accumulator
+	for (int column = 0; column < STUDENTS; column++)
+	{
+		total += averagePerClass[row][column];
+	}
+
+	return total;
+}
+
+double getColumnTotal(double averagePerStudent[CLASS][STUDENTS]) // Finds total for specific column
+{
+	int student_num;
+	int column;
+
+	cout << "What student position would you like to know the average for?" << endl;
+	cin >> student_num; // specifies what column to solve for
+	column = student_num - 1;
+
+
+	double total = 0; //accumulator
+	for (int row = 0; row < CLASS; row++)
+	{
+		total += averagePerStudent[row][column];
+	}
+
+
+	return total;
+}
+
+double getHighestInRow(double HighestInClass[CLASS][STUDENTS]) // find the highest number in a row
+{
+	int class_num;
+	int row;
+
+	cout << "What class would you like to find the Highest Grade for?" << endl;
+	cin >> class_num; // specifies what row
+	row = class_num - 1;
+
+	double highest = HighestInClass[row][0];
+	for (int column = 0; column < STUDENTS; column++)
+	{
+		if (HighestInClass[row][column] > HighestInClass[row][0])
+			highest = HighestInClass[row][column];
+	}
+
+	return highest;
+}
+
+double getLowestInRow(double LowestInClass[CLASS][STUDENTS]) // find the lowset number in a row
+{
+	int class_num;
+	int row;
+
+	cout << "What class would you like to find the Lowest Grade for?" << endl;
+	cin >> class_num; // specifies what row
+	row = class_num - 1;
+
+	double lowest = LowestInClass[row][0];
+	for (int column = 0; column < STUDENTS; column++)
+	{
+		if (LowestInClass[row][column] < LowestInClass[row][0])
+			lowest = LowestInClass[row][column];
+	}
+
+
+	return lowest;
+}
