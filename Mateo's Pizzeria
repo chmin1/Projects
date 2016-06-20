@@ -1,0 +1,64 @@
+<html>
+<head>
+<style>
+body
+{
+   font-family: "Jokerman" ;
+  font-size: 50px ;  
+  }
+</style>
+	<TITLE> Mateo's </TITLE>	
+</head>
+
+<body size=>
+<p ALIGN="center"><b> Mateo's Pizzeria </b></p>
+<hr />
+<p ALIGN="center"><b> What Size Would You Like? </b></p>
+<form>
+  <input type=radio name="size" value="a" />Personal
+    <br />
+  <input type=radio name="size" value="b" />Small
+    <br />
+  <input type=radio name="size" value="c" />Medium
+    <br />
+  <input type=radio name="size" value="d" />Large
+    <br />
+  <input type=radio name="size" value="e" />X-Large
+    <br />
+  <input type=radio name="size" value="f" />OMG
+    <br />
+  <input type="reset" />
+    <p>
+</form>
+<hr />
+<p ALIGN="center"><b> And What Crust will That Be? </b></p>
+<form>
+  <input type=radio name="crust" value="a" />Thin
+    <br />
+  <input type=radio name="crust" value="b" />Thick
+    <br />
+  <input type=radio name="crust" value="c" />Sicilian
+    <br />
+  <input type="reset" />
+    <p>
+</form>
+<hr />
+<p ALIGN="center"><b> Toppings? </b></p>
+<form> Choices
+<select name='question'>
+	<option>Pepperoni</option>
+	<option>Cheese</option>
+	<option>Sausage</option>
+	<option>Mushrooms</option>
+	<option>Black Olives</option>
+	<option>Bacon</option>
+	<option>buffalo</option>
+	
+</select>
+</form>
+
+
+
+
+</body>
+</html>
