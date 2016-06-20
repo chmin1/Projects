@@ -1,0 +1,28 @@
+print("Welcome to the RANDOM NUMBER GUESSING GAME!\n", 
+"Guess a number between 1-100, if your right you win!\n", 
+"If not, you must try again\n", 
+"\n");
+
+play = input("Would you like to play? (Enter Y for yes or N for no)" );
+
+while play == 'Y' or play == 'y':
+    import random;
+    rn = random.randint(1,100);
+    n = int(input("guess a number: " ));
+    
+    while n < 1:
+        print("Invalid input, input an answer between 1-100");
+        n = int(input("guess a number: " ));
+    
+    while n != rn:
+        if n < rn:
+            print("TOO LOW! Try Again.");
+            n = int(input("guess a number: " ));
+        elif n > rn:
+            print("TOO HIGH! Try Again.");
+            n = int(input("guess a number: " ));
+    
+    print("CONGRATS!!! YOU GOT IT!\n",);
+    play = input("Would you like to play again? (Enter Y for yes or N for no)" );
+    
+print("Please play again soon!");
