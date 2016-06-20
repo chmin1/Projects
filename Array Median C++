@@ -1,0 +1,89 @@
+#include <iostream>
+using namespace std;
+
+void sortedArray(int*, int);
+void Median(int*, int);
+
+int main()
+{
+	int size;
+
+	cout << "How many values would you like to input (3-10 values): ";
+	cin >> size;
+
+	while (size > 10)
+	{
+		cout << "Enter an amount less than 10: ";
+		cin.clear();
+		cin.ignore();
+		cin >> size;
+	}
+	while (size < 3)
+	{
+		cout << "Enter an amount greater than 2: ";
+		cin.clear();
+		cin.ignore();
+		cin >> size;
+	}
+
+	int *Array = new int[size];
+
+	cout << endl << "Enter " << size << " values into the array:" << endl;
+
+	for (int count = 0; count < size; count++)
+	{
+		cin >> *(Array + count);
+	}
+
+	sortedArray(Array, size);
+	Median(Array, size);
+
+	return 0;
+}
+
+void sortedArray(int* numbers, int size)
+{
+	int ScanVar, minCount, minValue;
+	for (ScanVar = 0; ScanVar < (size - 1); ScanVar++)
+	{
+		minCount = ScanVar;
+		minValue = numbers[ScanVar];
+
+		for (int index = ScanVar + 1; index < size; index++)
+		{
+			if (numbers[index] < minValue)
+			{
+				minValue = numbers[index];
+				minCount = index;
+			}
+		}
+		numbers[minCount] = numbers[ScanVar];
+		numbers[ScanVar] = minValue;
+	}
+
+	cout << "Here are your numbers, sorted: " << endl;
+
+	for (int count = 0; count < size; count++)
+		cout << *(numbers + count) << " ";
+	
+	cout << endl;
+}
+
+void Median(int* numbers, int size)
+{
+	int Index = 0;
+	int median = 0;
+
+	if ((size % 2)!= 0)
+	{
+		Index = ((size - 1) / 2);
+		median = *(numbers + Index);
+	}
+	else
+	{
+		Index = size / 2;
+		median = (*(numbers + (Index - 1)) + *(numbers + Index)) / 2;
+	}
+
+	cout << "Median = " << median << endl;
+}
