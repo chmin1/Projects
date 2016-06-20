@@ -1,0 +1,75 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	double pi = 3.14159; //value of pi
+	double area, length, width, base, height; //used to calculate area
+	int case_choice; //will be used to determine case of which area to solve for
+
+	cout << "Welcome to the Geometry Calculator!\n";
+	cout << "What would you like to find?\n";
+	cout << endl;
+	cout << "1. Calculate the Area of a Circle\n"
+		<< "2. Calculate the Area of a Rectangle\n"
+		<< "3. Calculate the Area of a Triangle\n"
+		<< "4. Quit\n";
+	cout << endl;
+	cout << "Choose case: 1-4\n";
+	cin >> case_choice; //input for a case number 1-4
+
+	while (case_choice < 1 || case_choice > 4) //validates a case between 1 and 4 is chosen.
+	{
+		cout << "Invalid Case Choice, Try Again.\n";
+		//cin.clear(); // stops the infinite loop
+		//cin.ignore(); // stops infinite loop
+		cin >> case_choice; //re-enter a case choice
+	}
+
+	cout << endl;
+
+	switch (case_choice)
+	{
+	case 1: // area of a circle
+		cout << "what is the radius of the circle?\n";
+		double radius;
+		cin >> radius; //numerically; no characters
+		while (radius < 0)
+		{
+			cout << "invalid values, try again.\n";
+			cin >> radius;
+		}
+		area = pi * (radius * radius);
+		cout << "The area of the circle is " << area << endl;
+		break;
+	case 2: // area of a rectangle
+		cout << "what is the length and width of the rectangle?\n";
+		cin >> width >> length; //numerically; no characters
+		while (width < 0 || length < 0)
+		{
+			cout << "invalid values, try again.\n";
+			cin >> width >> length;
+		}
+		area = length * width;
+		cout << "The area of the rectangle is " << area << endl;
+		break;
+	case 3: // area of a triangle
+		cout << "What is the length of the base and height of the triangle?\n";
+		cin >> base >> height; //numerically; no characters
+		while (base < 0 || height < 0)
+		{
+			cout << "invalid values, try again.\n";
+			cin >> base >> height;
+		}
+		area = (base * height) / 2;
+		cout << "The area of the triangle is " << area << endl;
+		break;
+	case 4: // quit
+		cout << "okay\n";
+		break;
+	}
+
+	cout << "Thank you for using the Geometry Calculator!\n"; //exit statement
+
+	return 0;
+}
