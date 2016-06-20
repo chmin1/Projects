@@ -1,0 +1,58 @@
+pi = 3.14159;
+
+print("welcome to the Geometry Calculator!\n"
+        "What would you like to find?\n");
+
+print("1. Calculate the Area of a Circle?\n"
+        "2. Calculate the Area of a Rectangle?\n"
+        "3. Calculate the Area of a Triangle?\n"
+        "4. Quit\n");
+        
+print("Choose a case 1-4: ");
+case_choice = int(input());
+
+while (case_choice < 1 or case_choice > 4):
+    print("Invalid Case Choice, Try Again");
+    case_choice = int(input());
+
+if(case_choice == 1):
+    print("What is the radius?");
+    radius = float(input());
+    while (radius < 0):
+        print("Invalid value, try again.");
+        radius = float(input());
+    area = pi * (radius * radius)
+    print("The Area of a Circle with the radius ", radius, " is ", 
+    "{0:.5f}".format(area));
+
+elif(case_choice == 2):
+    print("What is the length and width?");
+    length = float(input("length: "));
+    width = float(input("width: "));
+    while (length < 0 or width < 0):
+        print("Invalid value, try again.");
+        length = float(input("length: "));
+        width = float(input("width: "));
+    area = length * width;
+    print("The Area of a Rectangle with a length of ", 
+    "{0:.2f}".format(length), 
+    " and a width of ", "{0:.2f}".format(width), 
+    " is ", "{0:.2f}".format(area));
+
+elif(case_choice == 3):
+    print("What is the height and base of the Triangle?");
+    height = float(input("length: "));
+    base = float(input("base: "));
+    while (height < 0 or base < 0):
+        print("Invalid value, try again.");
+        height = float(input("height: "));
+        base = float(input("base: "));
+    area = 0.5 * (base * height);
+    print("The area of a triangle with a base of ", "{0:.2f}".format(base),
+    " and a height of ", "{0:.2f}".format(height), " is ", 
+    "{0:.2f}".format(area));
+
+else:
+    print("okay");
+
+print("Thank you for using the Geometry Calculator!");
