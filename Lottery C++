@@ -1,0 +1,67 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+int main()
+{
+	const int SIZE = 5;
+	const int MAX = 9;
+	const int MIN = 0;
+	int lottery[SIZE];
+	int user_input[SIZE];
+	unsigned seed = time(0);
+	srand(static_cast<unsigned int>(time(0)));
+
+	cout << "THE LOTTERY" << endl <<
+		"----------------------" << endl << endl;
+	cout << "Choose 5 numbers from 0-9." << endl
+		<< "These numbers must exactly match to the lottery pattern" << endl << endl;
+
+	for (int x = 0; x < SIZE; x++)		
+		lottery[x] = (rand() % (MAX + MIN + 1)) - MIN;
+
+	cout << "input your numbers (hit the return key after each number): ";
+	for (int y = 0; y < SIZE; y++)
+	{
+		cin >> user_input[y];
+		while (user_input[y] < 0 || user_input[y] > 9)
+		{
+			cout << " INVALID; User must use a value between 0 and 9" << endl;
+			cin.clear();
+			cin.ignore();
+			cin >> user_input[y];
+		}
+	}
+
+	cout << "The Lottery Numbers are: ";
+	for (int xfin = 0; xfin < SIZE; xfin++)
+	{
+		cout << lottery[xfin];
+	}
+
+	cout << endl;
+	
+	cout << "Your Numbers are: ";
+	for (int yfin = 0; yfin < SIZE; yfin++)
+	{
+		 cout << user_input[yfin];
+	}
+
+	cout << endl;
+
+	int count = 0;
+	for (int z = 0; z < SIZE; z++)
+	{
+		if (user_input[z] == lottery[z])
+			count++;
+	}
+
+	if (count == SIZE)
+		cout << "You matched all 5, YOU WON!" << endl;
+	else
+		cout << "you made " << count << " matche(s)." << endl;
+
+
+	return 0;
+}
